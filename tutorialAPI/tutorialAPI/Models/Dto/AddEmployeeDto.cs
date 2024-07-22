@@ -1,8 +1,7 @@
-﻿namespace tutorialAPI.Models.Entities
+﻿namespace tutorialAPI.Models.Dto
 {
-    public class Employee
+    public class AddEmployeeDto
     {
-        public Guid id { get; set; }     
         public required int depID { get; set; }
         public required string fullname { get; set; }
         public required string created_at { get; set; }

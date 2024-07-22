@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Migrations\\20240721233913_init-mig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tutorialAPI\\Migrations\\20240721233913_init-mig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|c:\\users\\onura\\onedrive\\belgeler\\github\\api\\tutorialapi\\tutorialapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|solutionrelative:tutorialapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|c:\\users\\onura\\onedrive\\belgeler\\github\\api\\tutorialapi\\tutorialapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|solutionrelative:tutorialapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|c:\\users\\onura\\onedrive\\belgeler\\github\\api\\tutorialapi\\tutorialapi\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|solutionrelative:tutorialapi\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20240721233913_init-mig.cs",
-              "DocumentMoniker": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Migrations\\20240721233913_init-mig.cs",
-              "RelativeDocumentMoniker": "tutorialAPI\\Migrations\\20240721233913_init-mig.cs",
-              "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Migrations\\20240721233913_init-mig.cs",
-              "RelativeToolTip": "tutorialAPI\\Migrations\\20240721233913_init-mig.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAACIAAAA3AAAA",
+              "Title": "EmployeesController.cs",
+              "DocumentMoniker": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Controllers\\EmployeesController.cs",
+              "RelativeDocumentMoniker": "tutorialAPI\\Controllers\\EmployeesController.cs",
+              "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Controllers\\EmployeesController.cs",
+              "RelativeToolTip": "tutorialAPI\\Controllers\\EmployeesController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-21T23:39:13.744Z",
+              "WhenOpened": "2024-07-22T21:39:23.179Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Program.cs",
-              "RelativeDocumentMoniker": "tutorialAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Program.cs",
-              "RelativeToolTip": "tutorialAPI\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAMAAAA",
+              "Title": "DepartmentsController.cs",
+              "DocumentMoniker": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Controllers\\DepartmentsController.cs",
+              "RelativeDocumentMoniker": "tutorialAPI\\Controllers\\DepartmentsController.cs",
+              "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Controllers\\DepartmentsController.cs",
+              "RelativeToolTip": "tutorialAPI\\Controllers\\DepartmentsController.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAIwFoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-21T23:32:07.456Z",
+              "WhenOpened": "2024-07-22T21:39:20.211Z",
               "EditorCaption": ""
             }
           ]

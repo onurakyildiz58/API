@@ -2,7 +2,7 @@
 {
     public class Department
     {
-        public required int id { get; set; } 
+        public Guid id { get; set; } 
         public required string name { get; set; }
     }
 }
