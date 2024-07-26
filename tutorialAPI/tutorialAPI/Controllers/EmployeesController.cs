@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using tutorialAPI.Data;
 using tutorialAPI.Models.Dto;
 using tutorialAPI.Models.Entities;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace tutorialAPI.Controllers
 {
@@ -12,13 +14,16 @@ namespace tutorialAPI.Controllers
     public class EmployeesController : ControllerBase
     {           
         private readonly ApplicationDBContext dBContext;
+        private readonly IWebHostEnvironment env;
 
-        public EmployeesController(ApplicationDBContext dBContext) 
+        public EmployeesController(ApplicationDBContext dBContext, IWebHostEnvironment env) 
         {
             this.dBContext = dBContext;
+            this.env = env;
         }
 
         [HttpGet]
+        [Route("get/")]
         public IActionResult Get()
         {
             var result = dBContext.Employees.ToList();
@@ -27,7 +32,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpGet]
-        [Route("{id:guid}")]
+        [Route("getUser/{id:guid}")]
         public IActionResult GetByID(Guid id)
         {
             var result = dBContext.Employees.Find(id);
@@ -41,6 +46,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpPost]
+        [Route("add/")]
         public IActionResult Add(AddEmployeeDto addEmployeeDto)
         {
             var employeeEntitiy = new Employee()
@@ -58,7 +64,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpPut]
-        [Route("{id:guid}")]
+        [Route("update/{id:guid}")]
         public IActionResult Put(Guid id, AddEmployeeDto addEmployeeDto)
         {
             var result =  dBContext.Employees.Find(id);
@@ -78,7 +84,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("{id:guid}")]
+        [Route("delete/{id:guid}")]
         public IActionResult Delete(Guid id)
         {
             var result = dBContext.Employees.Find(id);
@@ -90,6 +96,39 @@ namespace tutorialAPI.Controllers
 
             dBContext.Employees.Remove(result);
             dBContext.SaveChanges();
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("savefile/")]
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string fileName = postedFile.FileName;
+                var physicalPath = env.ContentRootPath + "/images/" + fileName;
+
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+
+                return new JsonResult(fileName);
+            }
+            catch (Exception)
+            {
+                return new JsonResult("anonymous.png");
+            }
+        }
+
+        [HttpGet]
+        [Route("getAllDeps/")]
+        public IActionResult GetDeps()
+        {
+            var result = dBContext.Departments.ToList();
 
             return Ok(result);
         }

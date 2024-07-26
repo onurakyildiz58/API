@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|c:\\users\\onura\\onedrive\\belgeler\\github\\api\\tutorialapi\\tutorialapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|solutionrelative:tutorialapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|c:\\users\\onura\\onedrive\\belgeler\\github\\api\\tutorialapi\\tutorialapi\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{24C4642F-AF58-48FC-9B50-C3ADA021D228}|tutorialAPI\\tutorialAPI.csproj|solutionrelative:tutorialapi\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,22 +24,9 @@
               "RelativeDocumentMoniker": "tutorialAPI\\Controllers\\EmployeesController.cs",
               "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Controllers\\EmployeesController.cs",
               "RelativeToolTip": "tutorialAPI\\Controllers\\EmployeesController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAAJAAAA",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAIwG8AAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-22T21:39:23.179Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DepartmentsController.cs",
-              "DocumentMoniker": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Controllers\\DepartmentsController.cs",
-              "RelativeDocumentMoniker": "tutorialAPI\\Controllers\\DepartmentsController.cs",
-              "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\tutorialAPI\\tutorialAPI\\Controllers\\DepartmentsController.cs",
-              "RelativeToolTip": "tutorialAPI\\Controllers\\DepartmentsController.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAIwFoAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T21:39:20.211Z",
               "EditorCaption": ""
             }
           ]

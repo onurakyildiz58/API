@@ -19,6 +19,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpGet]
+        [Route("get/")]
         public IActionResult Get()
         {
             var result = dBContext.Departments.ToList();
@@ -27,7 +28,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpGet]
-        [Route("{id:guid}")]
+        [Route("getDepartment/{id:guid}")]
         public IActionResult GetByID(Guid id)
         {
             var result = dBContext.Departments.Find(id);
@@ -41,6 +42,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpPost]
+        [Route("add/")]
         public IActionResult Add(AddDepartmentDto addDepartmentDto)
         {
             var departmentEntitiy = new Department()
@@ -55,7 +57,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpPut]
-        [Route("{id:guid}")]                            
+        [Route("update/{id:guid}")]                            
         public IActionResult Put(Guid id, AddDepartmentDto addDepartmentDto)
         {
             var result = dBContext.Departments.Find(id);
@@ -73,7 +75,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("{id:guid}")]
+        [Route("delete/{id:guid}")]
         public IActionResult Delete(Guid id)
         {
             var result = dBContext.Departments.Find(id);
