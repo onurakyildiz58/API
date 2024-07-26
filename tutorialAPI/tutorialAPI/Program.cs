@@ -5,15 +5,25 @@ using tutorialAPI.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Raven.corp
-builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
-//Raven.corp
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000")  // Update this with the URL of your React app
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
+// Add DbContext
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
 
 var app = builder.Build();
 
@@ -32,6 +42,8 @@ app.UseStaticFiles(new StaticFileOptions
         Path.Combine(Directory.GetCurrentDirectory(), "images")),
     RequestPath = "/images"
 });
+
+app.UseCors("AllowSpecificOrigin");  // Apply the CORS policy
 
 app.UseAuthorization();
 

@@ -19,7 +19,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpGet]
-        [Route("get/")]
+        [Route("get")]
         public IActionResult Get()
         {
             var result = dBContext.Departments.ToList();
@@ -42,7 +42,7 @@ namespace tutorialAPI.Controllers
         }
 
         [HttpPost]
-        [Route("add/")]
+        [Route("add")]
         public IActionResult Add(AddDepartmentDto addDepartmentDto)
         {
             var departmentEntitiy = new Department()
