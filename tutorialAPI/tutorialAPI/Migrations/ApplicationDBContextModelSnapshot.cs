@@ -47,8 +47,9 @@ namespace tutorialAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("depID")
-                        .HasColumnType("int");
+                    b.Property<string>("depID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("fullname")
                         .IsRequired()
