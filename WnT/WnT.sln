@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WnT.API", "WnT.API\WnT.API.csproj", "{865DDED9-126F-4538-9FF5-2EAD56649BD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{865DDED9-126F-4538-9FF5-2EAD56649BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{865DDED9-126F-4538-9FF5-2EAD56649BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{865DDED9-126F-4538-9FF5-2EAD56649BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{865DDED9-126F-4538-9FF5-2EAD56649BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AB9D7F7-B546-48E6-AC91-C20AAF9C22D5}
+	EndGlobalSection
+EndGlobal

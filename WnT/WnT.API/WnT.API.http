@@ -1,0 +1,6 @@
+@WnT.API_HostAddress = http://localhost:5179
+
+GET {{WnT.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
