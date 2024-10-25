@@ -1,8 +1,7 @@
-﻿namespace WnT.API.Models.Domain
+﻿namespace WnT.API.Models.DTO
 {
-    public class Region
+    public class AddRegionDTO
     {
-        public Guid Id { get; set; }
         public required string Code { get; set; }
         public required string Name { get; set; }
         public string? RegionImageUrl { get; set; }
