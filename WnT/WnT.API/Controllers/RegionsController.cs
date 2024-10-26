@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileSystemGlobbing.Internal;
 using WnT.API.Data;
 using WnT.API.Models.Domain;
 using WnT.API.Models.DTO;
+using WnT.API.Repo;
 
 namespace WnT.API.Controllers
 {
@@ -13,10 +16,14 @@ namespace WnT.API.Controllers
     public class RegionsController : ControllerBase
     {
         private readonly WnTDbContext dbContext;
+        private readonly IRegionRepo regionRepo;
+        private readonly IMapper mapper;
 
-        public RegionsController(WnTDbContext dbContext)
+        public RegionsController(WnTDbContext dbContext, IRegionRepo regionRepo, IMapper mapper)
         {
             this.dbContext = dbContext;
+            this.regionRepo = regionRepo;
+            this.mapper = mapper;
         }
 
         /*
@@ -30,9 +37,18 @@ namespace WnT.API.Controllers
         [Route("getall")]
         public async Task<IActionResult> GetAll()
         {
+            /*
+            BEFORE REPOSITORY PATTERN
+
             // Retrieve all Regions as domain models from the database
             var result = await dbContext.Regions.ToListAsync();
+            */
 
+            var result = await regionRepo.GetAllAsync();
+
+            /*   
+            BEFORE AUTOMAPPER
+            
             // Map each domain model to a DTO for client response
             var regionDTO = new List<RegionDTO>();
             foreach (var region in result) 
@@ -44,7 +60,11 @@ namespace WnT.API.Controllers
                     Name = region.Name,
                     RegionImageUrl = region.RegionImageUrl,
                 });
-            }
+            }    
+            */
+
+            // Map each domain model to a DTO for client response
+            var regionDTO = mapper.Map<List<RegionDTO>>(result);
 
             return Ok(regionDTO);
         }
@@ -53,23 +73,14 @@ namespace WnT.API.Controllers
         [Route("getRegionById/{Id:Guid}")]
         public async Task<IActionResult> GetByID([FromRoute] Guid Id)
         {
-            // Fetch a single Region as a domain model by ID
-            var result = await dbContext.Regions.FirstOrDefaultAsync(x => x.Id == Id);
+            var result = await regionRepo.GetByIdAsync(Id);
 
             if (result is null)
             {
                 return NotFound();
             }
-
-            // Map domain model to DTO for client response
-            var regionDTO = new RegionDTO
-            {
-                Id = result.Id,
-                Code = result.Code,
-                Name = result.Name,
-                RegionImageUrl = result.RegionImageUrl,
-            };
-
+            
+            var regionDTO = mapper.Map<RegionDTO>(result);
             return Ok(regionDTO);
         }
 
@@ -78,25 +89,13 @@ namespace WnT.API.Controllers
         public async Task<IActionResult> Create([FromBody] AddRegionDTO addRegionDTO)
         {
             // Convert DTO to domain model for database save
-            var region = new Region
-            {
-                Code = addRegionDTO.Code,
-                Name = addRegionDTO.Name,
-                RegionImageUrl = addRegionDTO.RegionImageUrl,
-            };
+            var region = mapper.Map<Region>(addRegionDTO);
 
-            dbContext.Regions.Add(region);
-            await dbContext.SaveChangesAsync();
+            region = await regionRepo.CreateAsync(region);
 
             // Map saved domain model back to DTO for client response
-            var regionDTO = new RegionDTO
-            {
-                Id = region.Id,
-                Code = region.Code,
-                Name = region.Name,
-                RegionImageUrl = region.RegionImageUrl,
-            };
-
+            var regionDTO = mapper.Map<RegionDTO>(region);
+           
             return CreatedAtAction(nameof(GetByID), new { id = regionDTO.Id }, regionDTO);
         }
 
@@ -104,29 +103,19 @@ namespace WnT.API.Controllers
         [Route("updateRegion/{Id:Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid Id, [FromBody] UpdateRegionDTO updateRegionDTO)
         {
-            // Find existing Region by ID
-            var regionExists = await dbContext.Regions.FirstOrDefaultAsync(x=> x.Id == Id);
+            //map DTO to domain to send to repo
+            var region = mapper.Map<Region>(updateRegionDTO);
+            
+            region = await regionRepo.UpdateAsync(Id, region);
 
-            if (regionExists is null)
+            if(region is null)
             {
                 return NotFound();
             }
 
-            // Update domain model fields with data from DTO
-            regionExists.Code = updateRegionDTO.Code;
-            regionExists.Name = updateRegionDTO.Name;
-            regionExists.RegionImageUrl = updateRegionDTO.RegionImageUrl;
-            await dbContext.SaveChangesAsync();
-
             // Map updated domain model to DTO for client response
-            var regionDTO = new RegionDTO
-            {
-                Id = regionExists.Id,
-                Code = regionExists.Code,
-                Name = regionExists.Name,
-                RegionImageUrl = regionExists.RegionImageUrl,
-            };
-
+            var regionDTO = mapper.Map<RegionDTO>(region);
+            
             return Ok(regionDTO);
         }
 
@@ -134,24 +123,15 @@ namespace WnT.API.Controllers
         [Route("deleteRegion/{Id:Guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid Id) 
         {
-            var regionExists = await dbContext.Regions.FirstOrDefaultAsync(x=>x.Id == Id);
+            var regionExists = await regionRepo.DeleteAsync(Id);
 
-            if(regionExists is null)
+            if (regionExists is null)
             {
                 return NotFound();
             }
-
-            dbContext.Regions.Remove(regionExists);
-            await dbContext.SaveChangesAsync();
-
+            
             //map domain to DTO show client deleted item
-            var regionDTO = new RegionDTO
-            {
-                Id = regionExists.Id,
-                Code = regionExists.Code,
-                Name = regionExists.Name,
-                RegionImageUrl = regionExists.RegionImageUrl,
-            };
+            var regionDTO = mapper.Map<RegionDTO>(regionExists);
 
             return Ok(regionDTO);
         }

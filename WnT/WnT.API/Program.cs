@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WnT.API.Data;
+using WnT.API.Repo;
+using WnT.API.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<WnTDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
+builder.Services.AddDbContext<WnTDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
+builder.Services.AddScoped<IRegionRepo, SQLRegionRepo>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();
 
