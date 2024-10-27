@@ -15,13 +15,11 @@ namespace WnT.API.Controllers
     [ApiController]
     public class RegionsController : ControllerBase
     {
-        private readonly WnTDbContext dbContext;
         private readonly IRegionRepo regionRepo;
         private readonly IMapper mapper;
 
-        public RegionsController(WnTDbContext dbContext, IRegionRepo regionRepo, IMapper mapper)
+        public RegionsController( IRegionRepo regionRepo, IMapper mapper)
         {
-            this.dbContext = dbContext;
             this.regionRepo = regionRepo;
             this.mapper = mapper;
         }
