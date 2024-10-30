@@ -12,10 +12,46 @@ namespace WnT.API.Repo.walk
         {
             this.dbContext = dbContext;
         }
-                                                            
-        public async Task<List<Walk>> GetAllAsync()
+
+        public async Task<List<Walk>> GetAllAsync(string? filterOn = null,
+                                                  string? filterQuery = null,
+                                                  string? sortBy = null,
+                                                  bool isAsc = true,
+                                                  int pageParam = 1,
+                                                  int pageSize = 10)
         {
-            return await dbContext.Walks.Include(x => x.Difficulty).Include(x => x.Region).ToListAsync();
+            var walks = dbContext.Walks.Include(x => x.Difficulty).Include(x => x.Region).AsQueryable();
+
+            //filtering
+            if (string.IsNullOrWhiteSpace(filterOn) == false && string.IsNullOrWhiteSpace(filterQuery) == false)
+            {
+                if (filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = walks.Where(x => x.Name.Contains(filterQuery));
+                }
+            }
+
+            //sorting
+            if (string.IsNullOrWhiteSpace(sortBy) == false)
+            {
+                if (sortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = isAsc ? walks.OrderBy(x => x.Name) : walks.OrderByDescending(x => x.Name);
+                }
+                else if (sortBy.Equals("Length", StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = isAsc ? walks.OrderBy(x => x.LengthInKM) : walks.OrderByDescending(x => x.LengthInKM);
+                }
+            }
+
+
+            //pagination
+            var pagination = (pageParam - 1) * pageSize;
+            // if user want to get page 2 calculation says (2-1)*10 = 10 so its gonna skip first 10 result and take 10 result after them
+            // skip pagination take pageSize basicly
+
+            return await walks.Skip(pagination).Take(pageSize).ToListAsync();
+            //return await dbContext.Walks.Include(x => x.Difficulty).Include(x => x.Region).ToListAsync();
         }
 
         public async Task<Walk?> GetByIdAsync(Guid Id)
@@ -64,5 +100,6 @@ namespace WnT.API.Repo.walk
 
             return walkExists;
         }
+
     }
 }

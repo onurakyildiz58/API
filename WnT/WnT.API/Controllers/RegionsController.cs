@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using WnT.API.CustomActionFilter;
 using WnT.API.Models.Domain;
 using WnT.API.Models.DTO.region;
 using WnT.API.Repo.region;
@@ -79,23 +80,27 @@ namespace WnT.API.Controllers
 
         [HttpPost]
         [Route("saveRegion")]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody] AddRegionDTO addRegionDTO)
         {
+           
             // Convert DTO to domain model for database save
             var region = mapper.Map<Region>(addRegionDTO);
-
             region = await regionRepo.CreateAsync(region);
 
             // Map saved domain model back to DTO for client response
             var regionDTO = mapper.Map<RegionDTO>(region);
-           
+
             return CreatedAtAction(nameof(GetByID), new { id = regionDTO.Id }, regionDTO);
+           
         }
 
         [HttpPut]
         [Route("updateRegion/{Id:Guid}")]
+        [ValidateModel]
         public async Task<IActionResult> Update([FromRoute] Guid Id, [FromBody] UpdateRegionDTO updateRegionDTO)
         {
+           
             //map DTO to domain to send to repo
             var region = mapper.Map<Region>(updateRegionDTO);
             
@@ -110,6 +115,7 @@ namespace WnT.API.Controllers
             var regionDTO = mapper.Map<RegionDTO>(region);
             
             return Ok(regionDTO);
+            
         }
 
         [HttpDelete]

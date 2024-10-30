@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WnT.API.CustomActionFilter;
 using WnT.API.Models.Domain;
 using WnT.API.Models.DTO.region;
 using WnT.API.Models.DTO.walk;
@@ -22,11 +23,17 @@ namespace WnT.API.Controllers
             this.mapper = mapper;
         }
 
+        //api/Walks/getall?filterOn='filteredColumn'&filterQuery='filteredWord'&sortBy='sortedColumn'&isAsc='ascOrDesc'&pageParam='pageNumber'&pageSize='PageSize'
         [HttpGet]
         [Route("getall")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? filterOn,
+                                                [FromQuery] string? filterQuery,
+                                                [FromQuery] string? sortBy,
+                                                [FromQuery] bool? isAsc,
+                                                [FromQuery] int pageParam = 1,
+                                                [FromQuery] int pageSize = 10)
         {
-            var result = await walkRepo.GetAllAsync();
+            var result = await walkRepo.GetAllAsync(filterOn, filterQuery, sortBy, isAsc ?? true, pageParam, pageSize);
 
             var walkDto = mapper.Map<List<WalkDTO>>(result);
 
@@ -51,6 +58,7 @@ namespace WnT.API.Controllers
 
         [HttpPost]
         [Route("saveWalk")]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody] AddWalkDTO addWalkDTO)
         {
             // Convert DTO to domain model for database save
@@ -66,6 +74,7 @@ namespace WnT.API.Controllers
 
         [HttpPut]
         [Route("updateWalk/{Id:Guid}")]
+        [ValidateModel]
         public async Task<IActionResult> Update([FromRoute] Guid Id, [FromBody] UpdateWalkDTO updateWalkDTO)
         {
             //map DTO to domain to send to repo
@@ -74,7 +83,7 @@ namespace WnT.API.Controllers
             walk = await walkRepo.UpdateAsync(Id, walk);
 
             if (walk is null)
-            {                                                         
+            {
                 return NotFound();
             }
 
