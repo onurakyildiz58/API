@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WnT.API.Data;
 using WnT.API.Models.Domain;
-using WnT.API.Models.DTO;
-namespace WnT.API.Repo
+
+namespace WnT.API.Repo.region
 {
     public class SQLRegionRepo : IRegionRepo
     {
@@ -12,7 +12,7 @@ namespace WnT.API.Repo
         {
             this.dbContext = dbContext;
         }
-        
+
         public async Task<List<Region>> GetAllAsync()
         {
             return await dbContext.Regions.ToListAsync();

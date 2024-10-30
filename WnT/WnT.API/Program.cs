@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using WnT.API.Data;
-using WnT.API.Repo;
 using WnT.API.Mappings;
+using WnT.API.Repo.walk;
+using WnT.API.Repo.region;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<WnTDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("connectionString")));
 builder.Services.AddScoped<IRegionRepo, SQLRegionRepo>();
+builder.Services.AddScoped<IWalkRepo, SQLWalkRepo>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 var app = builder.Build();

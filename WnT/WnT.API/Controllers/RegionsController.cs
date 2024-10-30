@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileSystemGlobbing.Internal;
-using WnT.API.Data;
 using WnT.API.Models.Domain;
-using WnT.API.Models.DTO;
-using WnT.API.Repo;
+using WnT.API.Models.DTO.region;
+using WnT.API.Repo.region;
 
 namespace WnT.API.Controllers
 {
@@ -18,7 +13,7 @@ namespace WnT.API.Controllers
         private readonly IRegionRepo regionRepo;
         private readonly IMapper mapper;
 
-        public RegionsController( IRegionRepo regionRepo, IMapper mapper)
+        public RegionsController(IRegionRepo regionRepo, IMapper mapper)
         {
             this.regionRepo = regionRepo;
             this.mapper = mapper;

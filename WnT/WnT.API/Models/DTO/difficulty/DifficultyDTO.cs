@@ -1,4 +1,4 @@
-﻿namespace WnT.API.Models.DTO
+﻿namespace WnT.API.Models.DTO.difficulty
 {
     public class DifficultyDTO
     {
