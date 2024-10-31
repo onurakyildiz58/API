@@ -5,7 +5,7 @@ namespace WnT.API.Data
 {
     public class WnTDbContext : DbContext
     {
-        public WnTDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public WnTDbContext(DbContextOptions<WnTDbContext> dbContextOptions) : base(dbContextOptions)
         {
             
         }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WnT.API.CustomActionFilter;
 using WnT.API.Models.Domain;
@@ -29,33 +30,10 @@ namespace WnT.API.Controllers
 
         [HttpGet]
         [Route("getall")]
+        [Authorize(Roles = "user, admin")]
         public async Task<IActionResult> GetAll()
         {
-            /*
-            BEFORE REPOSITORY PATTERN
-
-            // Retrieve all Regions as domain models from the database
-            var result = await dbContext.Regions.ToListAsync();
-            */
-
             var result = await regionRepo.GetAllAsync();
-
-            /*   
-            BEFORE AUTOMAPPER
-            
-            // Map each domain model to a DTO for client response
-            var regionDTO = new List<RegionDTO>();
-            foreach (var region in result) 
-            {
-                regionDTO.Add(new RegionDTO()
-                {
-                    Id = region.Id,
-                    Code = region.Code,
-                    Name = region.Name,
-                    RegionImageUrl = region.RegionImageUrl,
-                });
-            }    
-            */
 
             // Map each domain model to a DTO for client response
             var regionDTO = mapper.Map<List<RegionDTO>>(result);
@@ -65,6 +43,7 @@ namespace WnT.API.Controllers
 
         [HttpGet]
         [Route("getRegionById/{Id:Guid}")]
+        [Authorize(Roles = "user,admin")]
         public async Task<IActionResult> GetByID([FromRoute] Guid Id)
         {
             var result = await regionRepo.GetByIdAsync(Id);
@@ -81,6 +60,7 @@ namespace WnT.API.Controllers
         [HttpPost]
         [Route("saveRegion")]
         [ValidateModel]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([FromBody] AddRegionDTO addRegionDTO)
         {
            
@@ -98,6 +78,7 @@ namespace WnT.API.Controllers
         [HttpPut]
         [Route("updateRegion/{Id:Guid}")]
         [ValidateModel]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update([FromRoute] Guid Id, [FromBody] UpdateRegionDTO updateRegionDTO)
         {
            
@@ -120,6 +101,7 @@ namespace WnT.API.Controllers
 
         [HttpDelete]
         [Route("deleteRegion/{Id:Guid}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete([FromRoute] Guid Id) 
         {
             var regionExists = await regionRepo.DeleteAsync(Id);
