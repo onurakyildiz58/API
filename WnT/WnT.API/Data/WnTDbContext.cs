@@ -13,8 +13,9 @@ namespace WnT.API.Data
         public DbSet<Difficulty> Difficulties { get; set; }
         public DbSet<Region> Regions { get; set; }
         public DbSet<Walk> Walks { get; set; }
+        public DbSet<Image> Images { get; set; }
+
         // Data Seeder
-        /*        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -42,8 +43,6 @@ namespace WnT.API.Data
 
             // Seed difficulties to the database
             modelBuilder.Entity<Difficulty>().HasData(difficulties);
-
-
 
             // Seed data for Regions
             var regions = new List<Region>
@@ -94,7 +93,5 @@ namespace WnT.API.Data
 
             modelBuilder.Entity<Region>().HasData(regions);
         }    
-        */
-    
     }
 }      
