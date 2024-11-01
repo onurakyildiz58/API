@@ -27,6 +27,7 @@ namespace WnT.API.Controllers
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO registerDTO)
         {
+
             var identityUser = new IdentityUser
             {
                 UserName = registerDTO.Email,

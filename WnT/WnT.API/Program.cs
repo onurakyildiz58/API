@@ -12,10 +12,18 @@ using Microsoft.OpenApi.Models;
 using WnT.API.Repo.image;
 using Microsoft.Extensions.FileProviders;
 using WnT.API.Controllers;
+using Serilog;
+using WnT.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/WnT_Logs.txt", rollingInterval: RollingInterval.Day)
+    .MinimumLevel.Information().CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
 
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
@@ -118,6 +126,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandler>();
 
 app.UseHttpsRedirection();
 

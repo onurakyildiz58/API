@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Text.Json;
 using WnT.API.CustomActionFilter;
 using WnT.API.Models.Domain;
 using WnT.API.Models.DTO.region;
@@ -14,11 +16,13 @@ namespace WnT.API.Controllers
     {
         private readonly IRegionRepo regionRepo;
         private readonly IMapper mapper;
+        private readonly ILogger logger;
 
-        public RegionsController(IRegionRepo regionRepo, IMapper mapper)
+        public RegionsController(IRegionRepo regionRepo, IMapper mapper, ILogger<RegionsController>  logger)
         {
             this.regionRepo = regionRepo;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         /*
@@ -30,14 +34,16 @@ namespace WnT.API.Controllers
 
         [HttpGet]
         [Route("getall")]
-        [Authorize(Roles = "user, admin")]
+        //[Authorize(Roles = "user, admin")]
         public async Task<IActionResult> GetAll()
         {
+            logger.LogInformation("regions get all method was invoked");
             var result = await regionRepo.GetAllAsync();
 
             // Map each domain model to a DTO for client response
             var regionDTO = mapper.Map<List<RegionDTO>>(result);
-
+           
+            logger.LogInformation($"finished regions get all method{JsonSerializer.Serialize(regionDTO)}");
             return Ok(regionDTO);
         }
 
