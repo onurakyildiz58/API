@@ -1,12 +1,54 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\WnT\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{54AB37E6-6052-42A7-8D36-C9DD0192FEE5}|WnT.Web\\WnT.Web.csproj|c:\\users\\onura\\onedrive\\belgeler\\github\\api\\wnt\\wnt.web\\controllers\\walkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54AB37E6-6052-42A7-8D36-C9DD0192FEE5}|WnT.Web\\WnT.Web.csproj|solutionrelative:wnt.web\\controllers\\walkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54AB37E6-6052-42A7-8D36-C9DD0192FEE5}|WnT.Web\\WnT.Web.csproj|c:\\users\\onura\\onedrive\\belgeler\\github\\api\\wnt\\wnt.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{54AB37E6-6052-42A7-8D36-C9DD0192FEE5}|WnT.Web\\WnT.Web.csproj|solutionrelative:wnt.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\WnT\\WnT.Web\\appsettings.json",
+              "RelativeDocumentMoniker": "WnT.Web\\appsettings.json",
+              "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\WnT\\WnT.Web\\appsettings.json",
+              "RelativeToolTip": "WnT.Web\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-05T23:44:33.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WalksController.cs",
+              "DocumentMoniker": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\WnT\\WnT.Web\\Controllers\\WalksController.cs",
+              "RelativeDocumentMoniker": "WnT.Web\\Controllers\\WalksController.cs",
+              "ToolTip": "C:\\Users\\onura\\OneDrive\\Belgeler\\GitHub\\API\\WnT\\WnT.Web\\Controllers\\WalksController.cs",
+              "RelativeToolTip": "WnT.Web\\Controllers\\WalksController.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAADwv1YAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T23:19:24.879Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

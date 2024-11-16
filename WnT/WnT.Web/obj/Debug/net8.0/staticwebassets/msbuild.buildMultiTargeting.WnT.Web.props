@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WnT.Web.props" />
+</Project>

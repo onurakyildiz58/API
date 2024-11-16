@@ -25,13 +25,6 @@ namespace WnT.API.Controllers
             this.logger = logger;
         }
 
-        /*
-          DTOs: Used for client responses to define the data shape needed by the client.
-          Domain Models: Used for database entities and data fetching/saving operations.
-          - Fetching: Retrieve data as domain models from the database, then map to DTOs for client responses.
-          - Saving: Convert DTOs to domain models before saving to the database; map saved data back to DTOs if needed.
-        */
-
         [HttpGet]
         [Route("getall")]
         //[Authorize(Roles = "user, admin")]
@@ -49,7 +42,7 @@ namespace WnT.API.Controllers
 
         [HttpGet]
         [Route("getRegionById/{Id:Guid}")]
-        [Authorize(Roles = "user,admin")]
+        //[Authorize(Roles = "user,admin")]
         public async Task<IActionResult> GetByID([FromRoute] Guid Id)
         {
             var result = await regionRepo.GetByIdAsync(Id);
@@ -66,7 +59,7 @@ namespace WnT.API.Controllers
         [HttpPost]
         [Route("saveRegion")]
         [ValidateModel]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([FromBody] AddRegionDTO addRegionDTO)
         {
            
@@ -84,7 +77,7 @@ namespace WnT.API.Controllers
         [HttpPut]
         [Route("updateRegion/{Id:Guid}")]
         [ValidateModel]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Update([FromRoute] Guid Id, [FromBody] UpdateRegionDTO updateRegionDTO)
         {
            
@@ -107,7 +100,7 @@ namespace WnT.API.Controllers
 
         [HttpDelete]
         [Route("deleteRegion/{Id:Guid}")]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete([FromRoute] Guid Id) 
         {
             var regionExists = await regionRepo.DeleteAsync(Id);
